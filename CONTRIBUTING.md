@@ -4,9 +4,9 @@ Contributions are welcome, and they are greatly appreciated! Every little bit
 helps, and credit will always be given.
 
 Current contributors include:
-- (Christopher Alexander)[https://github.com/christopheralex] - christopher.a0@gmail.com
-- (Daniel King)[https://github.com/danfke] - dnlkng13@gmail.com
-- (Mel Liow)[https://github.com/mel-liow] - mel.liow.94@gmail.com
+- [Christopher Alexander](https://github.com/christopheralex) - christopher.a0@gmail.com
+- [Daniel King](https://github.com/danfke) - dnlkng13@gmail.com
+- [Mel Liow](https://github.com/mel-liow) - mel.liow.94@gmail.com
 
 Please feel free to connect or contact us if there are any queries.
 ## Types of Contributions
