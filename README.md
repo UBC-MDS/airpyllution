@@ -1,5 +1,5 @@
 # AirPyllution
-A package for visualizing future, historic and current air pollution data using the [OpenWeather API](https://openweathermap.org).
+A package for visualizing or obtaining future, historic and current air pollution data using the [OpenWeather API](https://openweathermap.org).
 
 ## Summary
 This package enables users to explore air pollution levels in locations around the world.
