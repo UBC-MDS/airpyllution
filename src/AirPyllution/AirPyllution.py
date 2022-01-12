@@ -19,6 +19,8 @@ def get_pollution_history(start_date, end_date, lat, lon, api_key):
         geographical latitude coordinate for the location
     lon : float
         geographical longitude coordinate for the location
+    api_key: string
+        OpenWeather API key
     Returns
     -------
     pandas.DataFrame
@@ -36,7 +38,7 @@ def get_pollution_history(start_date, end_date, lat, lon, api_key):
         ==========  ==============================================================
     Examples
     --------
-    >>> get_pollution_history(1606488670, 1606747870, 49.28, 123.12)
+    >>> get_pollution_history(1606488670, 1606747870, 49.28, 123.12, "APIKEY_example")
     0 1606482000 270.367 5.867 43.184 4.783 14.544 13.448 15.524 0.289
     1 1606478400 280.38 8.605 42.155 2.459 14.901 15.103 17.249 0.162
     2 1606474800 293.732 13.523 41.47 1.173 15.14 17.727 19.929 0.072
