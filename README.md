@@ -12,17 +12,17 @@ This API key should be stored in the `config.py` file. (TO ADD)
 For more information about API call limits and API care recommendations please visit the [OpenWeather how to start](https://openweathermap.org/appid) page.
 ## Functions
 The functions are as follows:
-- `getAirPollution()`
-- `getPollutionHistory()`
-- `getPollutionForecast()`
+- `get_air_pollution()`
+- `get_pollution_history()`
+- `get_pollution_forecast()`
 
-### `getAirPollution()`
+### `get_air_pollution()`
 Fetches the air pollution levels based on a location (string). Based on the values of the polluting gases, this package uses the [Air Quality Index](https://en.wikipedia.org/wiki/Air_quality_index#CAQI) to determine the level of pollution for the location and produces a coloured map of the area displaying the varying regions of air quality.
 
-### `getPollutionHistory()`
+### `get_pollution_history()`
 Requires a start and end date and fetches historic air pollution data for a specific location. The function returns a data frame with the values of the polluting gases over the specified date range.
 
-### `getPollutionForecast()`
+### `get_pollution_forecast()`
 Fetches air pollution data for the next 5 days for a specific location. The function returns a time series plot of the predicted pollution levels.
 
 
