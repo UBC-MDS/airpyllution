@@ -6,7 +6,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = u"AirPyllution"
+project = u"airpyllution"
 copyright = u"2022, Christopher Alexander, Daniel King, Mel Liow"
 author = u"Christopher Alexander, Daniel King, Mel Liow"
 

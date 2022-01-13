@@ -1,4 +1,4 @@
-# AirPyllution
+# airpyllution
 A package for visualizing or obtaining future, historic and current air pollution data using the [OpenWeather API](https://openweathermap.org).
 
 ## Summary
@@ -31,7 +31,7 @@ Although there is an abundance of python weather packages and APIs in the Python
 ## Installation
 
 ```bash
-$ pip install AirPyllution
+$ pip install airpyllution
 ```
 
 ## Usage
@@ -44,8 +44,8 @@ Interested in contributing? Check out the contributing guidelines. Please note t
 
 ## License
 
-`AirPyllution` was created by Christopher Alexander, Daniel King, Mel Liow. It is licensed under the terms of the MIT license.
+`airpyllution` was created by Christopher Alexander, Daniel King, Mel Liow. It is licensed under the terms of the MIT license.
 
 ## Credits
 
-`AirPyllution` was created with [`cookiecutter`](https://cookiecutter.readthedocs.io/en/latest/) and the `py-pkgs-cookiecutter` [template](https://github.com/py-pkgs/py-pkgs-cookiecutter).
+`airpyllution` was created with [`cookiecutter`](https://cookiecutter.readthedocs.io/en/latest/) and the `py-pkgs-cookiecutter` [template](https://github.com/py-pkgs/py-pkgs-cookiecutter).
