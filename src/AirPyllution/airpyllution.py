@@ -70,7 +70,7 @@ def get_air_pollution(lat, lon, api_key):
     """
 
 def get_pollution_forecast(lat, lon, api_key):
-    """Returns a time series plot showing predicted pollutant levels for the next 5 days
+    """Returns a time series plot showing predicted pollutant levels for the next 5 days.
     
     Performs an API request to OpenWeather Air Pollution API,
     retrieves weather forecast for the next 5 days, and
