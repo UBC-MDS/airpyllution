@@ -43,3 +43,55 @@ def get_pollution_history(start_date, end_date, lat, lon, api_key):
     1 1606478400 280.38 8.605 42.155 2.459 14.901 15.103 17.249 0.162
     2 1606474800 293.732 13.523 41.47 1.173 15.14 17.727 19.929 0.072
     """ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def get_pollution_forecast(lat, lon, api_key):
+    """Returns a time series plot showing predicted pollutant levels for the next 5 days
+    
+    Performs an API request to OpenWeather Air Pollution API,
+    retrieves weather forecast for the next 5 days, and
+    creates a time series graph of the pollutants with their concentration levels.
+
+    Parameters
+    ----------
+    lat : float
+        geographical latitude coordinate for the location
+    lon : float
+        geographical longitude coordinate for the location
+    api_key: string
+        OpenWeather API key
+
+    Returns
+    -------
+    altair.Chart
+        altair chart object with the x axis as time/UNIX timestamp and 
+        y axis as pollutant concentration.
+
+    Examples
+    --------
+    >>> get_pollution_forecast(50, 50, "APIKEY_example")
+    """ 
