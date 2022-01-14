@@ -1,1 +1,0 @@
-from AirPyllution import AirPyllution
