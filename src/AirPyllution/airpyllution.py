@@ -68,3 +68,30 @@ def get_air_pollution(lat, lon, api_key):
     --------
     >>> get_air_pollution(49.2497, -123.1193, "APIKEY_example")
     """
+
+def get_pollution_forecast(lat, lon, api_key):
+    """Returns a time series plot showing predicted pollutant levels for the next 5 days.
+    
+    Performs an API request to OpenWeather Air Pollution API,
+    retrieves weather forecast for the next 5 days, and
+    creates a time series graph of the pollutants with their concentration levels.
+
+    Parameters
+    ----------
+    lat : float
+        geographical latitude coordinate for the location
+    lon : float
+        geographical longitude coordinate for the location
+    api_key: string
+        OpenWeather API key
+
+    Returns
+    -------
+    altair.Chart
+        altair chart object with the x axis as time/UNIX timestamp and 
+        y axis as pollutant concentration.
+        
+    Examples
+    --------
+    >>> get_pollution_forecast(50, 50, "APIKEY_example")
+    """
