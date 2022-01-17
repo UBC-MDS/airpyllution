@@ -16,5 +16,5 @@ def test_pollution_history():
     # print(os.getenv('OPEN_WEATHER_MAP_API_KEY'))
 
     actual = airpyllution.get_pollution_history(params['lat'], params['lon'], params['start'], params['end'], params['appid'])
-    expected = "This function currently returns atring"
+    expected = "This function currently returns a string"
     assert actual == expected, "pollution history incorrectly returns string"

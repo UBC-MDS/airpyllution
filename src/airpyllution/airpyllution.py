@@ -66,10 +66,10 @@ def get_pollution_history(start_date, end_date, lat, lon, api_key):
 
     print(url)
     print(params)
-    print(os.environ.get('OPEN_WEATHER_MAP_API_KEY'))
-    response = requests.request(method=method, url=url, params=params)
-    print(response)
-    data = json.loads(response.text)
+    # print(os.environ.get('OPEN_WEATHER_MAP_API_KEY'))
+    # response = requests.request(method=method, url=url, params=params)
+    # print(response)
+    # data = json.loads(response.text)
 
     return "This function currently returns a string"
     
