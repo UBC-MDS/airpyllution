@@ -1,7 +1,8 @@
-from utils/constants import constants
 import requests
 import json
 import pandas as pd
+from ..utils.constants import *
+
 
 def get_pollution_history(start_date, end_date, lat, lon, api_key):
     """Returns a dataframe of pollution history for a location between a specified date range
@@ -48,7 +49,7 @@ def get_pollution_history(start_date, end_date, lat, lon, api_key):
     2 1606474800 293.732 13.523 41.47 1.173 15.14 17.727 19.929 0.072
     """ 
     api_key = app.config["OPEN_WEATHER_MAP_API_KEY"]
-    url = constants.OPEN_WEATHER_MAP_URL + 'air_pollution/history?'
+    url = OPEN_WEATHER_MAP_URL + 'air_pollution/history?'
     method = 'GET'
     params = {
         'lat': 49.28,
@@ -60,8 +61,8 @@ def get_pollution_history(start_date, end_date, lat, lon, api_key):
 
     response = requests.request(method=method, url=url, params=params)
     data = json.loads(response.text)
-
     
+
     
 
 
