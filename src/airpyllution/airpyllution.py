@@ -1,7 +1,7 @@
 import requests
 import json
 import pandas as pd
-from ..utils.constants import *
+from constants import *
 
 
 def get_pollution_history(start_date, end_date, lat, lon, api_key):
