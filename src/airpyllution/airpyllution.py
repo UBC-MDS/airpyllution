@@ -47,6 +47,7 @@ def get_pollution_history(start_date, end_date, lat, lon, api_key):
     1 1606478400 280.38 8.605 42.155 2.459 14.901 15.103 17.249 0.162
     2 1606474800 293.732 13.523 41.47 1.173 15.14 17.727 19.929 0.072
     """ 
+    api_key = app.config["OPEN_WEATHER_MAP_API_KEY"]
     url = constants.OPEN_WEATHER_MAP_URL + 'air_pollution/history?'
     method = 'GET'
     params = {
@@ -60,6 +61,7 @@ def get_pollution_history(start_date, end_date, lat, lon, api_key):
     response = requests.request(method=method, url=url, params=params)
     data = json.loads(response.text)
 
+    
     
 
 
