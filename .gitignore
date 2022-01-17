@@ -142,4 +142,4 @@ dmypy.json
 .DS_Store
 
 # Config vars
-config.py
+config.env
