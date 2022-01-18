@@ -1,6 +1,6 @@
 import requests
 import pandas as pd
-from .utils import date_conversion
+from .utils import convert_unix_to_date
 
 # import constants
 OPEN_WEATHER_MAP_URL = 'http://api.openweathermap.org/data/2.5/air_pollution/history' 
@@ -80,7 +80,7 @@ def get_pollution_history(start_date, end_date, lat, lon, api_key):
 
     try: 
         data = pd.DataFrame.from_records(list(map(lambda x:x["components"],response_obj["list"])))
-        data["dt"] = list(map(lambda x:date_conversion(x["dt"]),response_obj["list"]))
+        data["dt"] = list(map(lambda x:convert_unix_to_date(x["dt"]),response_obj["list"]))
 
         return data
 
