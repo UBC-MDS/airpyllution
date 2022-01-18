@@ -1,5 +1,7 @@
 import requests
 from airpyllution.utils import *
+import altair as alt
+alt.renderers.enable('mimetype')
 
 # import constants
 OPEN_WEATHER_MAP_URL = 'http://api.openweathermap.org/data/2.5/air_pollution/' 
@@ -139,3 +141,62 @@ def get_pollution_forecast(lat, lon, api_key):
     --------
     >>> get_pollution_forecast(50, 50, "APIKEY_example")
     """
+    if not isinstance(lat, float):
+        return "Latitude input should be a float"
+
+    if not isinstance(lon, float):
+        return "Longitude input should be a float"
+    
+    if not isinstance(api_key, str):
+        return "API Key should be a string"
+
+    if lat < -90.0 or lat > 90.0:
+        return "Enter valid latitude values (Range should be -90<Latitude<90)"
+
+    if lon < -180.0 or lon > 180.0:
+        return "Enter valid longitude values (Range should be -180<Longitude<180)"
+
+    url = OPEN_WEATHER_MAP_URL+"forecast"
+    params = {
+        'lat': lat,
+        'lon': lon,
+        'appid': api_key
+    }
+
+    try:
+        response = requests.get(url=url, params=params)
+        response_obj = response.json()
+        data = convert_data_to_pandas(response_obj)
+    except:
+        if 'cod' in response_obj:
+            return response_obj['message']
+        return "An error occurred requesting data from API"
+
+    if len(data) >= 1:
+        try:
+            data = data.melt(id_vars=['dt'], value_vars=['co', 'no', 'no2', 'o3', 'so2',
+                                      'pm2_5', 'pm10', 'nh3'],
+                                      var_name='Pollutants', value_name='Concentration')
+            data["dt"]= pd.to_datetime(data['dt'])
+            chart = alt.Chart(data).mark_line().encode(
+                    x = alt.X("dt", title="date"),
+                    y = alt.Y("Concentration", title="Concentration"),
+                    color = alt.Color("Pollutants")).properties(
+                    width=180,
+                    height=180
+                ).facet(
+                    facet='Pollutants:N',
+                    columns=4
+                ).resolve_axis(
+                    x='independent',
+                    y='independent'
+                ).resolve_scale(
+                    x='independent', 
+                    y='independent'
+                ).properties(title = "Pollutant concentration for the next 5 days",
+                            ).configure_title(fontSize=24, anchor='middle')
+        except:
+            return "An error occured in plotting"
+        return chart
+    else:
+        return "Insufficient data to forecast/plot."
