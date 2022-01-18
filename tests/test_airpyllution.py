@@ -14,7 +14,7 @@ def mocked_requests_get_pollution(*args, **kwargs):
 
         def json(self):
             return self.json_data
-    print(kwargs)
+
     if kwargs['url'] == 'http://api.openweathermap.org/data/2.5/air_pollution/history':
 
         if kwargs['params']['appid'] == 'invalid_api_key':
