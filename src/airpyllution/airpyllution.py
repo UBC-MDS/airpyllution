@@ -1,5 +1,6 @@
 import requests
 from airpyllution.utils import *
+import plotly.express as px
 
 # import constants
 OPEN_WEATHER_MAP_URL = 'http://api.openweathermap.org/data/2.5/air_pollution/' 
@@ -106,12 +107,50 @@ def get_air_pollution(lat, lon, api_key):
         OpenWeather API key
     Returns
     -------
-    altair.Chart
+    plotly.graph_objs._figure.Figure
 
     Examples
     --------
     >>> get_air_pollution(49.2497, -123.1193, "APIKEY_example")
     """
+    if not isinstance(lat, float):
+        return "Latitude input should be a float"
+
+    if not isinstance(lon, float):
+        return "Longitude input should be a float"
+    
+    if not isinstance(start_date, int):
+        return "start_date input should be an int"
+
+    if not isinstance(end_date, int):
+        return "end_date input should be an int"
+
+    url = 'http://api.openweathermap.org/data/2.5/air_pollution?' + 'history'
+    params = {
+        'lat': lat,
+        'lon': lon,
+        'appid': api_key
+    }
+
+    response = requests.get(url=url, params=params)
+    response_obj = response.json()
+
+    data = convert_data_to_pandas(response_obj)
+    data = data.melt(
+        id_vars=['lon', 'lat'],
+        value_vars = ['co', 'no', 'no2', 'o3', 'so2', 'pm2_5', 'nh3']
+    )
+
+    fig = px.scatter_geo(
+        data,
+        lon="lon",
+        lat="lat",
+        color="variable",
+        hover_name="variable",
+        size="value",
+        projection="natural earth",
+    )
+    return fig
 
 def get_pollution_forecast(lat, lon, api_key):
     """Returns a time series plot showing predicted pollutant levels for the next 5 days.
@@ -139,3 +178,4 @@ def get_pollution_forecast(lat, lon, api_key):
     --------
     >>> get_pollution_forecast(50, 50, "APIKEY_example")
     """
+    
