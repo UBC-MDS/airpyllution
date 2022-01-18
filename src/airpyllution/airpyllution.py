@@ -158,7 +158,7 @@ def get_pollution_forecast(lat, lon, api_key):
         return "Enter valid latitude values (Range should be -90<Latitude<90)"
 
     if lon < -180.0 or lon > 180.0:
-        return "Enter valid latitude values (Range should be -180<Longitude<180)"
+        return "Enter valid longitude values (Range should be -180<Longitude<180)"
 
     url = OPEN_WEATHER_MAP_URL+"forecast?"
     method = 'GET'

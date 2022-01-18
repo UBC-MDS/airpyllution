@@ -94,7 +94,7 @@ def test_pollution_forecast():
     assert airpyllution.get_pollution_forecast(
         mock_params['lat'],
         mock_incorrect_params['lon_oor'],
-        mock_params['appid']) == "Enter valid latitude values (Range should be -180<Longitude<180))"
+        mock_params['appid']) == "Enter valid longitude values (Range should be -180<Longitude<180)"
 
     # TODO: Checking if API key is false
     # assert airpyllution.get_pollution_history(
