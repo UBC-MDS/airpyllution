@@ -2,7 +2,7 @@ import requests
 from airpyllution.utils import *
 
 # import constants
-OPEN_WEATHER_MAP_URL = 'http://api.openweathermap.org/data/2.5/air_pollution/history' 
+OPEN_WEATHER_MAP_URL = 'http://api.openweathermap.org/data/2.5/air_pollution/' 
 
 def get_pollution_history(start_date, end_date, lat, lon, api_key):
     """Returns a dataframe of pollution history for a location between a specified date range
@@ -63,7 +63,7 @@ def get_pollution_history(start_date, end_date, lat, lon, api_key):
     if not isinstance(end_date, int):
         return "end_date input should be an int"
 
-    url = OPEN_WEATHER_MAP_URL
+    url = OPEN_WEATHER_MAP_URL + 'history'
     params = {
         'lat': lat,
         'lon': lon,
