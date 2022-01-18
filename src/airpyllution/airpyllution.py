@@ -156,8 +156,7 @@ def get_pollution_forecast(lat, lon, api_key):
     if lon < -180.0 or lon > 180.0:
         return "Enter valid longitude values (Range should be -180<Longitude<180)"
 
-    url = OPEN_WEATHER_MAP_URL+"forecast?"
-    method = 'GET'
+    url = OPEN_WEATHER_MAP_URL+"forecast"
     params = {
         'lat': lat,
         'lon': lon,
@@ -165,18 +164,13 @@ def get_pollution_forecast(lat, lon, api_key):
     }
 
     try:
-        response = requests.request(method=method, url=url, params=params)
-        response_obj = dict(response.json())
+        response = requests.get(url=url, params=params)
+        response_obj = response.json()
+        data = convert_data_to_pandas(response_obj)
     except:
         if 'cod' in response_obj:
             return response_obj['message']
         return "An error occurred requesting data from API"
-
-    try:
-        data = pd.DataFrame.from_records(list(map(lambda x:x["components"],response_obj["list"])))
-        data["dt"] = list(map(lambda x:convert_unix_to_date(x["dt"]),response_obj["list"]))
-    except:
-        return "An error occured during forecasting data"
 
     if len(data) >= 1:
         try:
