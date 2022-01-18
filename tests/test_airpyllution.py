@@ -1,8 +1,6 @@
 from airpyllution import airpyllution
 import pandas as pd
 
-load_dotenv()
-
 def test_pollution_history():
     """Test word counting from a file."""
     mock_params = {
@@ -54,4 +52,4 @@ def test_pollution_history():
         mock_params['end'], 
         mock_params['lat'], 
         mock_params['lon'], 
-        mock_incorrect_params['appid']) == "An error occurred requesting data from the api"
+        mock_incorrect_params['appid']) == 'Invalid API key. Please see http://openweathermap.org/faq#error401 for more info.'

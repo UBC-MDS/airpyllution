@@ -71,21 +71,25 @@ def get_pollution_history(start_date, end_date, lat, lon, api_key):
         'lon': lon,
         'start': start_date,
         'end': end_date,
-        'appid': api_key
+        # 'appid': 
+        'appid': 'hi'
     }
 
-    try: 
-        response = requests.request(method=method, url=url, params=params)
+    
+    response = requests.request(method=method, url=url, params=params)
+    response_obj = dict(response.json())
 
-        d = dict(response.json())
-        data = pd.DataFrame.from_records(list(map(lambda x:x["components"],d["list"])))
-        data["dt"] = list(map(lambda x:date_conversion(x["dt"]),d["list"]))
+    try: 
+        data = pd.DataFrame.from_records(list(map(lambda x:x["components"],response_obj["list"])))
+        data["dt"] = list(map(lambda x:date_conversion(x["dt"]),response_obj["list"]))
 
         return data
 
     except: 
-    
-        return "An error occurred requesting data from the api"
+        if 'cod' in response_obj:
+            return response_obj['message']
+        
+        return "An error occurred requesting data from"
     
 
 
