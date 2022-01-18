@@ -15,7 +15,8 @@ numpy = "^1.22.1"
 pandas = "^1.3.5"
 requests = "^2.27.1"
 python-dotenv = "^0.19.2"
-altair-viewer = "^0.4.0"
+unittest = "^0.0"
+responses = "^0.17.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"
