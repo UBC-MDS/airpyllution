@@ -1,6 +1,5 @@
 from airpyllution import airpyllution
-import os
-from dotenv import load_dotenv
+import pandas as pd
 
 load_dotenv()
 
@@ -11,7 +10,7 @@ def test_pollution_history():
         'lon': 123.12,
         'start': 1606488670,
         'end': 1606747870,
-        'appid': 'mock_data'
+        'appid': 'mock_api_key'
     }
 
     mock_incorrect_params = {
@@ -56,10 +55,3 @@ def test_pollution_history():
         mock_params['lat'], 
         mock_params['lon'], 
         mock_incorrect_params['appid']) == "An error occurred requesting data from the api"
-
-    assert airpyllution.get_pollution_history(
-        mock_params['start'], 
-        mock_params['end'], 
-        mock_params['lat'], 
-        mock_params['lon'], 
-        mock_params['appid']) == "DATA HERE"

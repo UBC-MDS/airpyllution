@@ -1,22 +1,9 @@
-from sys import api_version
 import requests
-import json
 import pandas as pd
-import os
-from datetime import datetime
+from .utils import date_conversion
 
-from dotenv import load_dotenv, find_dotenv
-
-load_dotenv()
-
-MY_ENV_VAR = os.getenv('OPEN_WEATHER_MAP_API_KEY')
 # import constants
 OPEN_WEATHER_MAP_URL = 'http://api.openweathermap.org/data/2.5/air_pollution/history' 
-
-def date_conversion(utime):
-    ts = int(utime)
-    return datetime.utcfromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
-
 
 def get_pollution_history(start_date, end_date, lat, lon, api_key):
     """Returns a dataframe of pollution history for a location between a specified date range
@@ -94,8 +81,7 @@ def get_pollution_history(start_date, end_date, lat, lon, api_key):
         data = pd.DataFrame.from_records(list(map(lambda x:x["components"],d["list"])))
         data["dt"] = list(map(lambda x:date_conversion(x["dt"]),d["list"]))
 
-        # NEED TO TURN INTO DATA FRAME
-        return "DATA HERE"
+        return data
 
     except: 
     
