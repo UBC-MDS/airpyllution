@@ -1,6 +1,5 @@
 import requests
-import pandas as pd
-from .utils import convert_unix_to_date
+from airpyllution.utils import *
 
 # import constants
 OPEN_WEATHER_MAP_URL = 'http://api.openweathermap.org/data/2.5/air_pollution/history' 
@@ -65,7 +64,6 @@ def get_pollution_history(start_date, end_date, lat, lon, api_key):
         return "end_date input should be an int"
 
     url = OPEN_WEATHER_MAP_URL
-    method = 'GET'
     params = {
         'lat': lat,
         'lon': lon,
@@ -75,12 +73,11 @@ def get_pollution_history(start_date, end_date, lat, lon, api_key):
     }
 
     
-    response = requests.request(method=method, url=url, params=params)
-    response_obj = dict(response.json())
+    response = requests.get(url=url, params=params)
+    response_obj = response.json()
 
     try: 
-        data = pd.DataFrame.from_records(list(map(lambda x:x["components"],response_obj["list"])))
-        data["dt"] = list(map(lambda x:convert_unix_to_date(x["dt"]),response_obj["list"]))
+        data = convert_data_to_pandas(response_obj)
 
         return data
 
@@ -88,9 +85,8 @@ def get_pollution_history(start_date, end_date, lat, lon, api_key):
         if 'cod' in response_obj:
             return response_obj['message']
         
-        return "An error occurred requesting data from"
+        return "An error occurred requesting data from the API"
     
-
 
 def get_air_pollution(lat, lon, api_key):
     """Returns a map depicting varying pollution levels for a specified location.
