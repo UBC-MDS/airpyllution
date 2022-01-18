@@ -3,6 +3,7 @@ import requests
 import json
 import pandas as pd
 import os
+from datetime import datetime
 
 from dotenv import load_dotenv, find_dotenv
 
@@ -10,7 +11,12 @@ load_dotenv()
 
 MY_ENV_VAR = os.getenv('OPEN_WEATHER_MAP_API_KEY')
 # import constants
-OPEN_WEATHER_MAP_URL = 'http://api.openweathermap.org/data/2.5/air_pollution/' 
+OPEN_WEATHER_MAP_URL = 'http://api.openweathermap.org/data/2.5/air_pollution/history' 
+
+def date_conversion(utime):
+    ts = int(utime)
+    return datetime.utcfromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
+
 
 def get_pollution_history(start_date, end_date, lat, lon, api_key):
     """Returns a dataframe of pollution history for a location between a specified date range
@@ -57,17 +63,21 @@ def get_pollution_history(start_date, end_date, lat, lon, api_key):
     2 1606474800 293.732 13.523 41.47 1.173 15.14 17.727 19.929 0.072
     """ 
 
-    print(MY_ENV_VAR)
-    print('hi')
     # api_key = app.config["OPEN_WEATHER_MAP_API_KEY"]
 
     if not isinstance(lat, float):
         return "Latitude input should be a float"
 
     if not isinstance(lon, float):
-        return "Latitude input should be a float"
+        return "Longitude input should be a float"
+    
+    if not isinstance(start_date, int):
+        return "start_date input should be an int"
 
-    url = OPEN_WEATHER_MAP_URL + 'air_pollution/history'
+    if not isinstance(end_date, int):
+        return "end_date input should be an int"
+
+    url = OPEN_WEATHER_MAP_URL
     method = 'GET'
     params = {
         'lat': lat,
@@ -77,14 +87,20 @@ def get_pollution_history(start_date, end_date, lat, lon, api_key):
         'appid': api_key
     }
 
-    response = requests.request(method=method, url=url, params=params)
-    data = json.loads(response.text)
+    try: 
+        response = requests.request(method=method, url=url, params=params)
 
-    return "This function currently returns a string"
+        d = dict(response.json())
+        data = pd.DataFrame.from_records(list(map(lambda x:x["components"],d["list"])))
+        data["dt"] = list(map(lambda x:date_conversion(x["dt"]),d["list"]))
+
+        # NEED TO TURN INTO DATA FRAME
+        return "DATA HERE"
+
+    except: 
     
-
+        return "An error occurred requesting data from the api"
     
-
 
 
 def get_air_pollution(lat, lon, api_key):
