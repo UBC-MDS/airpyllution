@@ -30,22 +30,7 @@ def mocked_requests_get_pollution_history(*args, **kwargs):
 
 @patch('requests.get', side_effect=mocked_requests_get_pollution_history)
 def test_pollution_history(mock_api_call):
-    """Test word counting from a file."""
-    mock_params = {
-        'lat': 49.28,
-        'lon': 123.12,
-        'start': 1606488670,
-        'end': 1606747870,
-        'appid': 'mock_api_key'
-    }
-
-    mock_incorrect_params = {
-        'lat': 'latitude_val',
-        'lon': 'longitude_val',
-        'start': 1234.567,
-        'end': 3.14159,
-        'appid': 'invalid_api_key'
-    }
+    """Test fetching pollution history from API"""
 
     # Invalid input type
     assert airpyllution.get_pollution_history(

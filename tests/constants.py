@@ -82,3 +82,19 @@ mock_api_invalid_key_error = {
    'cod': 401, 
    'message': 'Invalid API key. Please see http://openweathermap.org/faq#error401 for more info.' 
    }
+
+mock_params = {
+   'lat': 49.28,
+   'lon': 123.12,
+   'start': 1606488670,
+   'end': 1606747870,
+   'appid': 'mock_api_key'
+}
+
+mock_incorrect_params = {
+   'lat': 'latitude_val',
+   'lon': 'longitude_val',
+   'start': 1234.567,
+   'end': 3.14159,
+   'appid': 'invalid_api_key'
+}
