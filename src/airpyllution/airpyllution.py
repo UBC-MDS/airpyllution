@@ -154,6 +154,12 @@ def get_pollution_forecast(lat, lon, api_key):
     if not isinstance(api_key, str):
         return "API Key should be a string"
 
+    if lat < -90.0 or lat > 90.0:
+        return "Enter valid latitude values (Range should be -90<Latitude<90)"
+
+    if lon < -180.0 or lon > 180.0:
+        return "Enter valid latitude values (Range should be -180<Longitude<180)"
+
     url = OPEN_WEATHER_MAP_URL+"forecast?"
     method = 'GET'
     params = {
