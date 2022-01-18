@@ -1,3 +1,9 @@
+import requests
+import pandas as pd
+from .utils import convert_unix_to_date
+
+# import constants
+OPEN_WEATHER_MAP_URL = 'http://api.openweathermap.org/data/2.5/air_pollution/history' 
 
 def get_pollution_history(start_date, end_date, lat, lon, api_key):
     """Returns a dataframe of pollution history for a location between a specified date range
@@ -43,6 +49,48 @@ def get_pollution_history(start_date, end_date, lat, lon, api_key):
     1 1606478400 280.38 8.605 42.155 2.459 14.901 15.103 17.249 0.162
     2 1606474800 293.732 13.523 41.47 1.173 15.14 17.727 19.929 0.072
     """ 
+
+    # api_key = app.config["OPEN_WEATHER_MAP_API_KEY"]
+
+    if not isinstance(lat, float):
+        return "Latitude input should be a float"
+
+    if not isinstance(lon, float):
+        return "Longitude input should be a float"
+    
+    if not isinstance(start_date, int):
+        return "start_date input should be an int"
+
+    if not isinstance(end_date, int):
+        return "end_date input should be an int"
+
+    url = OPEN_WEATHER_MAP_URL
+    method = 'GET'
+    params = {
+        'lat': lat,
+        'lon': lon,
+        'start': start_date,
+        'end': end_date,
+        'appid': api_key
+    }
+
+    
+    response = requests.request(method=method, url=url, params=params)
+    response_obj = dict(response.json())
+
+    try: 
+        data = pd.DataFrame.from_records(list(map(lambda x:x["components"],response_obj["list"])))
+        data["dt"] = list(map(lambda x:convert_unix_to_date(x["dt"]),response_obj["list"]))
+
+        return data
+
+    except: 
+        if 'cod' in response_obj:
+            return response_obj['message']
+        
+        return "An error occurred requesting data from"
+    
+
 
 def get_air_pollution(lat, lon, api_key):
     """Returns a map depicting varying pollution levels for a specified location.
