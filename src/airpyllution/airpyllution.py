@@ -71,8 +71,7 @@ def get_pollution_history(start_date, end_date, lat, lon, api_key):
         'lon': lon,
         'start': start_date,
         'end': end_date,
-        # 'appid': 
-        'appid': 'hi'
+        'appid': api_key
     }
 
     
