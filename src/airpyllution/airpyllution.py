@@ -5,7 +5,7 @@ import altair as alt
 alt.renderers.enable('mimetype')
 
 # import constants
-OPEN_WEATHER_MAP_URL = 'http://api.openweathermap.org/data/2.5/air_pollution/' 
+OPEN_WEATHER_MAP_URL = 'http://api.openweathermap.org/data/2.5/air_pollution' 
 
 def get_pollution_history(start_date, end_date, lat, lon, api_key):
     """Returns a dataframe of pollution history for a location between a specified date range
@@ -66,7 +66,7 @@ def get_pollution_history(start_date, end_date, lat, lon, api_key):
     if not isinstance(end_date, int):
         return "end_date input should be an int"
 
-    url = OPEN_WEATHER_MAP_URL + 'history'
+    url = OPEN_WEATHER_MAP_URL + '/history'
     params = {
         'lat': lat,
         'lon': lon,
@@ -240,7 +240,7 @@ def get_pollution_forecast(lat, lon, api_key):
     if lon < -180.0 or lon > 180.0:
         return "Enter valid longitude values (Range should be -180<Longitude<180)"
 
-    url = OPEN_WEATHER_MAP_URL+"forecast"
+    url = OPEN_WEATHER_MAP_URL + "/forecast"
     params = {
         'lat': lat,
         'lon': lon,
