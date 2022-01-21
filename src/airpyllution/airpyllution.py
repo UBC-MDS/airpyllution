@@ -118,10 +118,10 @@ def get_air_pollution(lat, lon, api_key, fig_title=""):
     >>> get_air_pollution(49.2497, -123.1193, "APIKEY_example")
     """
     if not isinstance(lat, (float, int)):
-        return "Latitude input should be a float"
+        return "Latitude input should be a float or an integer"
 
     if not isinstance(lon, (float, int)):
-        return "Longitude input should be a float"
+        return "Longitude input should be a float or an integer"
     
     if not isinstance(api_key, str):
         return "API Key should be a string"
