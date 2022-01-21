@@ -98,7 +98,7 @@ def get_air_pollution(lat, lon, api_key, fig_title=""):
     The function makes an API request to the OpenWeather Air Pollution API and fetches
     pollution data for a given location.
 
-    The function transforms the returned JSON object from the request into an altair chart.
+    The function transforms the returned JSON object from the request into a plotly plot.
 
     Parameters
     ----------
