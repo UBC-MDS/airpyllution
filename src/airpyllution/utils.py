@@ -40,6 +40,11 @@ def convert_data_to_pandas(raw_data):
     --------
     >>> convert_data_to_pandas(data)
     """ 
-    data = pd.DataFrame.from_records(list(map(lambda x:x["components"],raw_data["list"])))
-    data["dt"] = list(map(lambda x:convert_unix_to_date(x["dt"]),raw_data["list"]))
+    try:
+        data = pd.DataFrame.from_records(list(map(lambda x:x["components"],raw_data["list"])))
+        data["dt"] = list(map(lambda x:convert_unix_to_date(x["dt"]),raw_data["list"]))
+    except:
+        data = raw_data["coord"]
+        data.update(raw_data["list"][0]["components"])
+        data = pd.DataFrame.from_records([data])
     return data
