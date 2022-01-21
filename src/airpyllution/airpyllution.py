@@ -1,11 +1,8 @@
 import requests
 from airpyllution.utils import *
-<<<<<<< HEAD
 import plotly.express as px
-=======
 import altair as alt
 alt.renderers.enable('mimetype')
->>>>>>> main
 
 # import constants
 OPEN_WEATHER_MAP_URL = 'http://api.openweathermap.org/data/2.5/air_pollution/' 
@@ -94,9 +91,9 @@ def get_pollution_history(start_date, end_date, lat, lon, api_key):
         return "An error occurred requesting data from the API"
     
 
-def get_air_pollution(lat, lon, api_key):
+def get_air_pollution(lat, lon, api_key, fig_title=""):
     """Returns a map depicting varying pollution levels for a specified location.
-    
+
     The function makes an API request to the OpenWeather Air Pollution API and fetches
     pollution data for a given location.
 
@@ -110,6 +107,8 @@ def get_air_pollution(lat, lon, api_key):
         geographical longitude coordinate for the location
     api_key: string
         OpenWeather API key
+    fig_title: string
+        title of returned figure
     Returns
     -------
     plotly.graph_objs._figure.Figure
@@ -118,32 +117,53 @@ def get_air_pollution(lat, lon, api_key):
     --------
     >>> get_air_pollution(49.2497, -123.1193, "APIKEY_example")
     """
-    if not isinstance(lat, float):
+    if not isinstance(lat, (float, int)):
         return "Latitude input should be a float"
 
-    if not isinstance(lon, float):
+    if not isinstance(lon, (float, int)):
         return "Longitude input should be a float"
     
-    if not isinstance(start_date, int):
-        return "start_date input should be an int"
+    if not isinstance(api_key, str):
+        return "API Key should be a string"
 
-    if not isinstance(end_date, int):
-        return "end_date input should be an int"
+    if lat < -90.0 or lat > 90.0:
+        return "Enter valid latitude values (Range should be -90<Latitude<90)"
 
-    url = 'http://api.openweathermap.org/data/2.5/air_pollution?' + 'history'
+    if lon < -180.0 or lon > 180.0:
+        return "Enter valid longitude values (Range should be -180<Longitude<180)"
+
+    url = OPEN_WEATHER_MAP_URL
     params = {
-        'lat': lat,
-        'lon': lon,
-        'appid': api_key
+        "lat": lat,
+        "lon": lon,
+        "appid": api_key,
     }
 
-    response = requests.get(url=url, params=params)
-    response_obj = response.json()
+    try:
+        response = requests.get(url=url, params=params)
+        response_obj = response.json()
+        data = convert_data_to_pandas(response_obj)
+    except:
+        if "cod" in response_obj:
+            return response_obj["message"]
+        return "An error occurred requesting data from API"
 
-    data = convert_data_to_pandas(response_obj)
     data = data.melt(
-        id_vars=['lon', 'lat'],
-        value_vars = ['co', 'no', 'no2', 'o3', 'so2', 'pm2_5', 'nh3']
+        id_vars=["lon", "lat"],
+        value_vars=["co", "no", "no2", "o3", "so2", "pm2_5", "pm10", "nh3"],
+    )
+
+    data = data.replace(
+        {
+            "co": "CO",
+            "no": "NO",
+            "no2": "NO2",
+            "o3": "O3",
+            "so2": "SO2",
+            "pm2_5": "PM2.5",
+            "pm10": "PM10",
+            "nh3": "NH3",
+        }
     )
 
     fig = px.scatter_geo(
@@ -151,10 +171,32 @@ def get_air_pollution(lat, lon, api_key):
         lon="lon",
         lat="lat",
         color="variable",
-        hover_name="variable",
         size="value",
         projection="natural earth",
+        labels={
+            "lon": "Longitude",
+            "lat": "Latitude",
+            "variable": "Pollutant",
+            "value": "Conc. (µg/m^3)",
+        },
+        title = fig_title
     )
+    
+    fig.update_layout(
+        legend={
+            'yanchor':"middle",
+            'y':0.72,
+            'xanchor':"right",
+            'x':1.2
+        },
+        title={
+            'y':0.85,
+            'x':0.47,
+            'xanchor': 'center',
+            'yanchor': 'top'
+        }
+    )
+    
     return fig
 
 def get_pollution_forecast(lat, lon, api_key):
@@ -183,9 +225,6 @@ def get_pollution_forecast(lat, lon, api_key):
     --------
     >>> get_pollution_forecast(50, 50, "APIKEY_example")
     """
-<<<<<<< HEAD
-    
-=======
     if not isinstance(lat, float):
         return "Latitude input should be a float"
 
@@ -245,4 +284,3 @@ def get_pollution_forecast(lat, lon, api_key):
         return chart
     else:
         return "Insufficient data to forecast/plot."
->>>>>>> main
