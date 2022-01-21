@@ -56,10 +56,10 @@ def get_pollution_history(start_date, end_date, lat, lon, api_key):
 
     # api_key = app.config["OPEN_WEATHER_MAP_API_KEY"]
 
-    if not isinstance(lat, float):
+    if not isinstance(lat, (float, int)):
         return "Latitude input should be a float"
 
-    if not isinstance(lon, float):
+    if not isinstance(lon, (float, int)):
         return "Longitude input should be a float"
 
     if not isinstance(start_date, int):
@@ -222,10 +222,10 @@ def get_pollution_forecast(lat, lon, api_key):
     --------
     >>> get_pollution_forecast(50, 50, "APIKEY_example")
     """
-    if not isinstance(lat, float):
+    if not isinstance(lat, (float, int)):
         return "Latitude input should be a float"
 
-    if not isinstance(lon, float):
+    if not isinstance(lon, (float, int)):
         return "Longitude input should be a float"
 
     if not isinstance(api_key, str):
