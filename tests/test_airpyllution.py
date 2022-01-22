@@ -4,6 +4,7 @@ from pandas._testing import assert_frame_equal
 from unittest.mock import patch
 from constants import *
 from airpyllution.utils import *
+import altair as alt
 from math import floor
 
 
@@ -249,3 +250,5 @@ def test_pollution_forecast(mock_api_call):
     assert len(forecast_chart.data) > 2
     assert len(forecast_chart.data) == 16
     assert forecast_chart.title == "Pollutant concentration for the next 5 days"
+    chart_dict = forecast_chart.to_dict()
+    assert chart_dict["facet"] == alt.Facet("Pollutants:N").to_dict()
