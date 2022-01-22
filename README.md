@@ -30,12 +30,23 @@ Although there is an abundance of python weather packages and APIs in the Python
 ## Installation
 
 ```bash
-$ pip install airpyllution
+$ pip install --index-url https://test.pypi.org/simple/ \
+  --extra-index-url https://pypi.org/simple airpyllution
 ```
 
 ## Usage
 
-- TODO
+1. Create an OpenWeatherMap API key
+2. Install airpyllution
+3. Run the following code from terminal after replacing your api key.
+```
+from airpyllution import airpyllution
+df = airpyllution.get_pollution_history(1606488670, 1606747870, 49.28, 123.12, "your_api_key")
+world_chart = airpyllution.get_air_pollution(49.2497, -123.1193, "your_api_key")
+world_chart.show()
+time_chart = airpyllution.get_pollution_forecast(45.0,180.0,"your_api_key")
+time_chart.show()
+```
 
 ## Contributing
 
