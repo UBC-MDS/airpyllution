@@ -180,7 +180,6 @@ def test_air_pollution(mock_api_call):
     fig = airpyllution.get_air_pollution(
         mock_params["lat"], mock_params["lon"], mock_params["appid"], "test"
     )
-    print(fig)
     # Check that the plot is a geographic scatter plot
     assert fig["data"][0]["type"] == "scattergeo"
     # Check that there are 8 pollutants
