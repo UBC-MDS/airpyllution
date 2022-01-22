@@ -108,3 +108,13 @@ mock_incorrect_params = {
     "end": 3.14159,
     "appid": "invalid_api_key",
 }
+
+mock_error_params = {
+    "lat": "latitude_val",
+    "lon": "longitude_val",
+    "lat_oor": -100.0,
+    "lon_oor": 181.0,
+    "start": 1234.567,
+    "end": 3.14159,
+    "appid": "api_error",
+}

@@ -77,18 +77,17 @@ def get_pollution_history(start_date, end_date, lat, lon, api_key):
         "appid": api_key,
     }
 
-    response = requests.get(url=url, params=params)
-    response_obj = response.json()
-
     try:
-        data = convert_data_to_pandas(response_obj)
+        response = requests.get(url=url, params=params)
+        response_obj = response.json()
 
-        return data
-
+        try:
+            data = convert_data_to_pandas(response_obj)
+            return data
+        except:
+            if "cod" in response_obj:
+                return response_obj["message"]
     except:
-        if "cod" in response_obj:
-            return response_obj["message"]
-
         return "An error occurred requesting data from the API"
 
 
@@ -146,13 +145,13 @@ def get_air_pollution(lat, lon, api_key, fig_title=""):
     try:
         response = requests.get(url=url, params=params)
         response_obj = response.json()
-        data = convert_data_to_pandas(response_obj)
+        try:
+            data = convert_data_to_pandas(response_obj)
+        except:
+            if "cod" in response_obj:
+                return response_obj["message"]
     except:
-        response = requests.get(url=url, params=params)
-        response_obj = response.json()
-        if "cod" in response_obj:
-            return response_obj["message"]
-        return "An error occurred requesting data from API"
+        return "An error occurred requesting data from the API"
 
     data = data.melt(
         id_vars=["lon", "lat"],
@@ -242,12 +241,15 @@ def get_pollution_forecast(lat, lon, api_key):
 
     try:
         response = requests.get(url=url, params=params)
+        print(f'RESPONSE', response)
         response_obj = response.json()
-        data = convert_data_to_pandas(response_obj)
+        try:
+            data = convert_data_to_pandas(response_obj)
+        except:
+            if "cod" in response_obj:
+                return response_obj["message"]
     except:
-        if "cod" in response_obj:
-            return response_obj["message"]
-        return "An error occurred requesting data from API"
+        return "An error occurred requesting data from the API"
 
     if len(data) >= 1:
         try:
