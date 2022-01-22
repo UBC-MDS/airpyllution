@@ -26,6 +26,9 @@ def mocked_requests_get_pollution(*args, **kwargs):
 
         if kwargs["params"]["appid"] == "invalid_api_key":
             return MockResponse(mock_api_invalid_key_error, 404)
+        
+        if kwargs["params"]["appid"] == "api_error":
+            return "ERROR"
 
         return MockResponse(mock_history_data, 200)
 
@@ -33,6 +36,9 @@ def mocked_requests_get_pollution(*args, **kwargs):
 
         if kwargs["params"]["appid"] == "invalid_api_key":
             return MockResponse(mock_api_invalid_key_error, 404)
+        
+        if kwargs["params"]["appid"] == "api_error":
+            return "ERROR"
 
         return MockResponse(mock_pollution_data, 200)
 
@@ -42,7 +48,9 @@ def mocked_requests_get_pollution(*args, **kwargs):
 
         if kwargs["params"]["appid"] == "invalid_api_key":
             return MockResponse(mock_api_invalid_key_error, 404)
-
+            
+        if kwargs["params"]["appid"] == "api_error":
+            return "ERROR"
         return MockResponse(mock_forecast_data, 200)
 
     return MockResponse(
@@ -106,6 +114,18 @@ def test_pollution_history(mock_api_call):
         == "Longitude input should be a float"
     )
 
+    # API error
+    assert (
+        airpyllution.get_pollution_history(
+            mock_params["start"],
+            mock_params["end"],
+            mock_params["lat"],
+            mock_params["lon"],
+            mock_error_params["appid"],
+        )
+        == "An error occurred requesting data from the API"
+    )
+
     # Invalid API key, tests nested try-except 
     assert (
         airpyllution.get_pollution_history(
@@ -166,6 +186,16 @@ def test_air_pollution(mock_api_call):
             mock_params["lat"], mock_incorrect_params["lon_oor"], mock_params["appid"]
         )
         == "Enter valid longitude values (Range should be -180<Longitude<180)"
+    )
+
+    # API error
+    assert (
+        airpyllution.get_air_pollution(
+            mock_params["lat"],
+            mock_params["lon"],
+            mock_error_params["appid"],
+        )
+        == "An error occurred requesting data from the API"
     )
 
     assert (
@@ -237,6 +267,13 @@ def test_pollution_forecast(mock_api_call):
             mock_params["lat"], mock_incorrect_params["lon_oor"], mock_params["appid"]
         )
         == "Enter valid longitude values (Range should be -180<Longitude<180)"
+    )
+
+    assert (
+        airpyllution.get_pollution_forecast(
+            mock_params["lat"], mock_params["lon"], mock_error_params["appid"],
+        )
+        == "An error occurred requesting data from the API"
     )
 
     assert (

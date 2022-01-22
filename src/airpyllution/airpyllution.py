@@ -80,6 +80,7 @@ def get_pollution_history(start_date, end_date, lat, lon, api_key):
     try:
         response = requests.get(url=url, params=params)
         response_obj = response.json()
+
         try:
             data = convert_data_to_pandas(response_obj)
             return data
@@ -240,6 +241,7 @@ def get_pollution_forecast(lat, lon, api_key):
 
     try:
         response = requests.get(url=url, params=params)
+        print(f'RESPONSE', response)
         response_obj = response.json()
         try:
             data = convert_data_to_pandas(response_obj)
