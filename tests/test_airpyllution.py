@@ -9,6 +9,11 @@ from math import floor
 
 
 def mocked_requests_get_pollution(*args, **kwargs):
+    """
+    Function for a mocking the Response object. 
+    This intercepts any API calls when called within the test suite and returns 
+    an instance of a MockResponse object. This should be used with the @patch decorator.
+    """
     class MockResponse:
         def __init__(self, json_data, status_code):
             self.json_data = json_data
