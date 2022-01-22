@@ -106,7 +106,7 @@ def test_pollution_history(mock_api_call):
         == "Longitude input should be a float"
     )
 
-    # Invalid API key
+    # Invalid API key, tests nested try-except 
     assert (
         airpyllution.get_pollution_history(
             mock_params["start"],
