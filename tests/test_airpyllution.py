@@ -10,10 +10,11 @@ from math import floor
 
 def mocked_requests_get_pollution(*args, **kwargs):
     """
-    Function for mocking a Response object. 
-    This intercepts any API calls when called within the test suite and returns 
+    Function for mocking a Response object.
+    This intercepts any API calls when called within the test suite and returns
     an instance of a MockResponse object. This should be used with the @patch decorator.
     """
+
     class MockResponse:
         def __init__(self, json_data, status_code):
             self.json_data = json_data
@@ -26,7 +27,7 @@ def mocked_requests_get_pollution(*args, **kwargs):
 
         if kwargs["params"]["appid"] == "invalid_api_key":
             return MockResponse(mock_api_invalid_key_error, 404)
-        
+
         if kwargs["params"]["appid"] == "api_error":
             return "ERROR"
 
@@ -36,7 +37,7 @@ def mocked_requests_get_pollution(*args, **kwargs):
 
         if kwargs["params"]["appid"] == "invalid_api_key":
             return MockResponse(mock_api_invalid_key_error, 404)
-        
+
         if kwargs["params"]["appid"] == "api_error":
             return "ERROR"
 
@@ -48,7 +49,7 @@ def mocked_requests_get_pollution(*args, **kwargs):
 
         if kwargs["params"]["appid"] == "invalid_api_key":
             return MockResponse(mock_api_invalid_key_error, 404)
-            
+
         if kwargs["params"]["appid"] == "api_error":
             return "ERROR"
         return MockResponse(mock_forecast_data, 200)
@@ -126,7 +127,7 @@ def test_pollution_history(mock_api_call):
         == "An error occurred requesting data from the API"
     )
 
-    # Invalid API key, tests nested try-except 
+    # Invalid API key, tests nested try-except
     assert (
         airpyllution.get_pollution_history(
             mock_params["start"],
@@ -271,7 +272,9 @@ def test_pollution_forecast(mock_api_call):
 
     assert (
         airpyllution.get_pollution_forecast(
-            mock_params["lat"], mock_params["lon"], mock_error_params["appid"],
+            mock_params["lat"],
+            mock_params["lon"],
+            mock_error_params["appid"],
         )
         == "An error occurred requesting data from the API"
     )
