@@ -11,12 +11,15 @@ OPEN_WEATHER_MAP_URL = "http://api.openweathermap.org/data/2.5/air_pollution"
 
 
 def get_pollution_history(start_date, end_date, lat, lon, api_key):
-    """Returns a dataframe of pollution history for a location between a specified date range
+    """Returns a dataframe of pollution history for a location between
+    a specified date range
 
-    Given a specified date range, the function makes an API request to the OpenWeather Air Pollution API and fetches
-    historic pollution data for a given location.
+    Given a specified date range, the function makes an API request to
+    the OpenWeather Air Pollution API and fetches historic pollution data
+    for a given location.
 
-    The function transforms the returned JSON object from the request into a Pandas dataframe.
+    The function transforms the returned JSON object from the request into
+    a Pandas dataframe.
 
     Note: Historical data is accessible from 27th November 2020
 
@@ -35,8 +38,9 @@ def get_pollution_history(start_date, end_date, lat, lon, api_key):
     Returns
     -------
     pandas.DataFrame
-        a dataframe of the data returned from Air Pollution API - columns are as followed:
-        ==========  ==============================================================
+        a dataframe of the data returned from the API.
+        Columns are as followed:
+        ==========  =================================================
         date        int
         co          float: Carbon monoxide
         no          float: Nitrogen monoxide
@@ -46,10 +50,11 @@ def get_pollution_history(start_date, end_date, lat, lon, api_key):
         pm2_5       float: Particulates 2.5
         pm10        float: Particulates 10
         nh3         float: Ammonia
-        ==========  ==============================================================
+        ==========  ==================================================
     Examples
     --------
-    >>> get_pollution_history(1606488670, 1606747870, 49.28, 123.12, "APIKEY_example")
+    >>> get_pollution_history(1606488670, 1606747870, 49.28, 123.12,
+    "APIKEY_example")
     0 1606482000 270.367 5.867 43.184 4.783 14.544 13.448 15.524 0.289
     1 1606478400 280.38 8.605 42.155 2.459 14.901 15.103 17.249 0.162
     2 1606474800 293.732 13.523 41.47 1.173 15.14 17.727 19.929 0.072
@@ -95,10 +100,11 @@ def get_pollution_history(start_date, end_date, lat, lon, api_key):
 def get_air_pollution(lat, lon, api_key, fig_title=""):
     """Returns a map depicting varying pollution levels for a specified location.
 
-    The function makes an API request to the OpenWeather Air Pollution API and fetches
-    pollution data for a given location.
+    The function makes an API request to the OpenWeather Air Pollution
+    API and fetches pollution data for a given location.
 
-    The function transforms the returned JSON object from the request into a plotly plot.
+    The function transforms the returned JSON object from the request
+    into a plotly plot.
 
     Parameters
     ----------
@@ -131,7 +137,9 @@ def get_air_pollution(lat, lon, api_key, fig_title=""):
         return "Enter valid latitude values (Range should be -90<Latitude<90)"
 
     if lon < -180.0 or lon > 180.0:
-        return "Enter valid longitude values (Range should be -180<Longitude<180)"
+        return (
+            "Enter valid longitude values (Range should be -180<Longitude<180)"
+        )
 
     if not isinstance(fig_title, str):
         return "Figure title should be a string"
@@ -197,11 +205,12 @@ def get_air_pollution(lat, lon, api_key, fig_title=""):
 
 
 def get_pollution_forecast(lat, lon, api_key):
-    """Returns a time series plot showing predicted pollutant levels for the next 5 days.
+    """Returns a time series plot showing predicted pollutant levels
+    for the next 5 days.
 
     Performs an API request to OpenWeather Air Pollution API,
-    retrieves weather forecast for the next 5 days, and
-    creates a time series graph of the pollutants with their concentration levels.
+    retrieves weather forecast for the next 5 days, and creates a time series
+    graph of the pollutants with their concentration levels.
 
     Parameters
     ----------
@@ -235,7 +244,9 @@ def get_pollution_forecast(lat, lon, api_key):
         return "Enter valid latitude values (Range should be -90<Latitude<90)"
 
     if lon < -180.0 or lon > 180.0:
-        return "Enter valid longitude values (Range should be -180<Longitude<180)"
+        return (
+            "Enter valid longitude values (Range should be -180<Longitude<180)"
+        )
 
     url = OPEN_WEATHER_MAP_URL + "/forecast"
     params = {"lat": lat, "lon": lon, "appid": api_key}
@@ -255,7 +266,16 @@ def get_pollution_forecast(lat, lon, api_key):
         try:
             data = data.melt(
                 id_vars=["dt"],
-                value_vars=["co", "no", "no2", "o3", "so2", "pm2_5", "pm10", "nh3"],
+                value_vars=[
+                    "co",
+                    "no",
+                    "no2",
+                    "o3",
+                    "so2",
+                    "pm2_5",
+                    "pm10",
+                    "nh3",
+                ],
                 var_name="Pollutants",
                 value_name="Concentration",
             )

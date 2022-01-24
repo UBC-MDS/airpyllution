@@ -5,7 +5,8 @@ import pandas as pd
 def convert_unix_to_date(utime):
     """Returns formatted date time string
 
-    Given a UNIX timestamp, this function reformats the timestamp to a string
+    Given a UNIX timestamp, this function reformats the timestamp
+    to a string
 
     Parameters
     ----------
@@ -26,8 +27,8 @@ def convert_unix_to_date(utime):
 def convert_data_to_pandas(raw_data):
     """Converts API data from OpenWeatherMap to a pandas dataframe
 
-    Parses the JSON data object and transforms it to a dataframe with a formatted
-    date column
+    Parses the JSON data object and transforms it to a dataframe
+    with a formatted date column
 
     Parameters
     ----------
