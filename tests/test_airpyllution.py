@@ -1,9 +1,16 @@
 from airpyllution import airpyllution
-import pandas as pd
 from pandas._testing import assert_frame_equal
 from unittest.mock import patch
-from constants import *
-from airpyllution.utils import *
+from constants import (
+    mock_api_invalid_key_error,
+    mock_error_params,
+    mock_forecast_data,
+    mock_history_data,
+    mock_incorrect_params,
+    mock_params,
+    mock_pollution_data,
+)
+from airpyllution.utils import convert_data_to_pandas
 import altair as alt
 from math import floor
 

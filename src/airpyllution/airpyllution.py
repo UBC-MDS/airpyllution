@@ -1,7 +1,8 @@
 import requests
-from airpyllution.utils import *
+from airpyllution.utils import convert_data_to_pandas
 import plotly.express as px
 import altair as alt
+import pandas as pd
 
 alt.renderers.enable("mimetype")
 
@@ -241,7 +242,6 @@ def get_pollution_forecast(lat, lon, api_key):
 
     try:
         response = requests.get(url=url, params=params)
-        print(f"RESPONSE", response)
         response_obj = response.json()
         try:
             data = convert_data_to_pandas(response_obj)
