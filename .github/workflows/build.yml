@@ -18,7 +18,10 @@ jobs:
         os: [ubuntu-latest, macos-latest, windows-latest]
         python-version: [3.9]
     steps:
+    # Check-out repository to access contents
     - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
 
     # Set up Python 3.9
     - name: Set up Python 3.9
