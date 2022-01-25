@@ -11,6 +11,7 @@ on:
 
 jobs:
   build:
+    # Set up operating system
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -18,25 +19,30 @@ jobs:
         python-version: [3.9]
     steps:
     - uses: actions/checkout@v2
+
+    # Set up Python 3.9
     - name: Set up Python 3.9
-      uses: actions/setup-python@v1
+      uses: actions/setup-python@v2
       with:
         python-version: 3.9
-    - name: Install dependencies
-      run: |
-        pip install poetry
-        poetry install
+
+    - uses: snok/install-poetry@v1
+
+    - name: Install package
+      run: poetry install
+
     - name: Check style
       run: poetry run flake8 --exclude=docs*
+
     - name: Test with pytest
-      run: |
-        poetry run pytest --cov=./ --cov-report=xml
+      run: poetry run pytest tests/ --cov=airpyllution --cov-report=xml
+
+# Uncomment once codecov is set up
 #     - name: Upload coverage to Codecov  
-#       uses: codecov/codecov-action@v1
+#     - uses: codecov/codecov-action@v2
 #       with:
-#         token: ${{ secrets.CODECOV_TOKEN }}
-#         file: ./coverage.xml
-#         flags: unittests
-#         name: codecov-umbrella
-#         yml: ./codecov.yml 
-#         fail_ci_if_error: true
+#         files: ./coverage.xml   # coverage report
+#         fail_ci_if_error: true  
+
+#     - name: Build documentation
+#       run: poetry run make html --directory docs/
