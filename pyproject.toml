@@ -19,11 +19,17 @@ responses = "^0.17.0"
 plotly = "^5.5.0"
 altair-viewer = "^0.4.0"
 mock = "^4.0.3"
+black = "^21.12b0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"
 pytest-cov = "^3.0.0"
+codecov = "^2.1.12"
+flake8 = "^4.0.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 79
