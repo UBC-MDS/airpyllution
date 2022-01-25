@@ -90,10 +90,10 @@ def get_pollution_history(start_date, end_date, lat, lon, api_key):
         try:
             data = convert_data_to_pandas(response_obj)
             return data
-        except:
+        except Exception:
             if "cod" in response_obj:
                 return response_obj["message"]
-    except:
+    except Exception:
         return "An error occurred requesting data from the API"
 
 
@@ -156,10 +156,10 @@ def get_air_pollution(lat, lon, api_key, fig_title=""):
         response_obj = response.json()
         try:
             data = convert_data_to_pandas(response_obj)
-        except:
+        except Exception:
             if "cod" in response_obj:
                 return response_obj["message"]
-    except:
+    except Exception:
         return "An error occurred requesting data from the API"
 
     data = data.melt(
@@ -256,10 +256,10 @@ def get_pollution_forecast(lat, lon, api_key):
         response_obj = response.json()
         try:
             data = convert_data_to_pandas(response_obj)
-        except:
+        except Exception:
             if "cod" in response_obj:
                 return response_obj["message"]
-    except:
+    except Exception:
         return "An error occurred requesting data from the API"
 
     if len(data) >= 1:
@@ -297,7 +297,7 @@ def get_pollution_forecast(lat, lon, api_key):
                 )
                 .configure_title(fontSize=24, anchor="middle")
             )
-        except:
+        except Exception:
             return "An error occured in plotting"
         return chart
     else:
