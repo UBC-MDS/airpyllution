@@ -31,7 +31,7 @@ jobs:
 
     - uses: snok/install-poetry@v1
 
-    - name: Install package
+    - name: Install packages
       run: poetry install
 
     - name: Check style
@@ -40,13 +40,14 @@ jobs:
     - name: Test with pytest
       run: poetry run pytest tests/ --cov=airpyllution --cov-report=xml
 
-
-# Uncomment once codecov is set up
-#     - name: Upload coverage to Codecov  
-#     - uses: codecov/codecov-action@v2
-#       with:
-#         files: ./coverage.xml   # coverage report
-#         fail_ci_if_error: true  
+    - name: Upload coverage to Codecov  
+      uses: codecov/codecov-action@v2
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        file: ./coverage.xml
+        flags: unittests
+        name: codecov-umbrella
+        fail_ci_if_error: true
 
 #     - name: Build documentation
 #       run: poetry run make html --directory docs/
