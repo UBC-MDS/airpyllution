@@ -45,12 +45,12 @@ from airpyllution.airpyllution import get_pollution_history
 from airpyllution.airpyllution import get_pollution_forecast
 ```
 
-Retrieve historic pollution data with specified date range and location:
+*Retrieve historic pollution data with specified date range and location:*
 ```
 get_pollution_history(1606488670, 1606747870, 49.28, 123.12, api_key)
 ```
 
-Generate an interactive map containing current pollution data by location:
+*Generate an interactive map containing current pollution data by location:*
 
 ```
 get_air_pollution(49.28, 123.12, api_key, "Current Air Pollution")
@@ -58,7 +58,7 @@ get_air_pollution(49.28, 123.12, api_key, "Current Air Pollution")
 
 ![](docs/air-pollution-map.png)
 
-Generate a time-series scatterplots of forecasted air pollution data:
+*Generate a time-series scatterplots of forecasted air pollution data:*
 ```
 import altair as alt
 alt.renderers.enable("html");
