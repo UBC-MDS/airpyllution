@@ -1,17 +1,20 @@
-name: release
+name: deploy
 
 on:
   # Only run this job if the "build" job passes
   workflow_run:
     workflows: [build]
     types: [completed]
+    branches: [main]
 
 jobs:
   on-success:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    # if: github.event_name == 'push' && github.ref == 'refs/heads/main'
 
     # Set up operating system
     runs-on: ubuntu-latest
+    
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
 
     steps:
       # Set up Python 3.9
