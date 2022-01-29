@@ -45,6 +45,11 @@ $ pip install --index-url https://test.pypi.org/simple/ \
 2. Install airpyllution
 3. Refer to [ReadTheDocs](https://airpyllution.readthedocs.io/en/latest/) for usage examples.
 
+Using the `get_air_pollution` function you can generate interactive maps containing current pollution data by location:
+![](docs/air-pollution-map.png)
+
+Using the `get_pollution_forecast` function you can generate time-series scatterplots of forecasted air pollution data:
+![](docs/forecast-example.png)
 ## Contributing
 
 Interested in contributing? Check out the contributing guidelines. Please note that this project is released with a Code of Conduct. By contributing to this project, you agree to abide by its terms.
