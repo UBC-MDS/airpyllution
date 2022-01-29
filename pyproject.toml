@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "airpyllution"
-version = "0.1.2"
+version = "0.2.1"
 description = "A package which  provides various functionalities on air pollution data."
 authors = ["Christopher Alexander, Daniel King, Mel Liow"]
 license = "MIT"
@@ -19,6 +19,7 @@ responses = "^0.17.0"
 plotly = "^5.5.0"
 altair-viewer = "^0.4.0"
 mock = "^4.0.3"
+black = "^21.12b0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"
@@ -27,7 +28,23 @@ jupyter = "^1.0.0"
 myst-nb = "^0.13.1"
 sphinx-autoapi = "^1.8.4"
 sphinx-rtd-theme = "^1.0.0"
+codecov = "^2.1.12"
+flake8 = "^4.0.1"
+python-semantic-release = "^7.24.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 79
+
+[tool.semantic_release]
+version_variable = "pyproject.toml:version" # version location
+branch = "main"                             # branch to make releases of
+changelog_file = "CHANGELOG.md"             # changelog file
+build_command = "pip install poetry && poetry build"  # build dists
+dist_path = "dist/"                         # where to put dists
+upload_to_pypi = false                      # don't auto-upload to PyPI
+remove_dist = false                         # don't remove dists
+patch_without_tag = "true"                  # always bump version on CD, even without angular commit (default is patch)

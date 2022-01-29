@@ -88,7 +88,8 @@ mock_forecast_data = {
 
 mock_api_invalid_key_error = {
     "cod": 401,
-    "message": "Invalid API key. Please see http://openweathermap.org/faq#error401 for more info.",
+    "message": "Invalid API key. Please see \
+    http://openweathermap.org/faq#error401 for more info.",
 }
 
 mock_params = {
@@ -118,3 +119,6 @@ mock_error_params = {
     "end": 3.14159,
     "appid": "api_error",
 }
+
+mock_invalid_message = "Invalid API key. Please see \
+    http://openweathermap.org/faq#error401 for more info."

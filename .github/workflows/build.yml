@@ -1,0 +1,53 @@
+name: build
+
+on:
+  # Trigger the workflow on push or pull request to main
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    # Set up operating system
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        python-version: [3.9]
+    steps:
+    # Check-out repository to access contents
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    # Set up Python 3.9
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+
+    - uses: snok/install-poetry@v1
+
+    - name: Install packages
+      run: poetry install
+
+    - name: Check style
+      run: poetry run flake8 --exclude=docs*
+
+    - name: Test with pytest
+      run: poetry run pytest tests/ --cov=./ --cov-report=xml
+
+    - name: Upload coverage to Codecov  
+      uses: codecov/codecov-action@v2
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        file: ./coverage.xml
+        flags: unittests
+        name: codecov-umbrella
+        fail_ci_if_error: true
+
+#     - name: Build documentation
+#       run: poetry run make html --directory docs/
