@@ -288,8 +288,8 @@ def get_pollution_forecast(lat, lon, api_key):
                     y=alt.Y("Concentration", title="Concentration"),
                     color=alt.Color("Pollutants"),
                 )
-                .properties(width=180, height=180)
-                .facet(facet="Pollutants:N", columns=4)
+                .properties(width=100, height=100)
+                .facet(facet="Pollutants:N", columns=3)
                 .resolve_axis(x="independent", y="independent")
                 .resolve_scale(x="independent", y="independent")
                 .properties(
