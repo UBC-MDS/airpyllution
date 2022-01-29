@@ -43,7 +43,7 @@ $ pip install --index-url https://test.pypi.org/simple/ \
 
 1. Create an OpenWeatherMap API key
 2. Install airpyllution
-3. Refer to [ReadTheDocs](https://airpyllution.readthedocs.io/en/latest/) for usage examples.
+3. Refer to [ReadTheDocs](https://airpyllution.readthedocs.io/en/latest/) for a usage guide and examples.
 
 Using the `get_air_pollution` function you can generate interactive maps containing current pollution data by location:
 ![](docs/air-pollution-map.png)
