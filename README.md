@@ -38,7 +38,7 @@ $ pip install airpyllution
 2. Install airpyllution
 3. Refer to [ReadTheDocs](https://airpyllution.readthedocs.io/en/latest/) for a usage guide and examples.
 
-To use the package, import the package with following commands:
+To use the package, import the package with the following commands:
 ```
 from airpyllution.airpyllution import get_air_pollution
 from airpyllution.airpyllution import get_pollution_history
