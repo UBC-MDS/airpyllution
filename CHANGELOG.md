@@ -2,6 +2,21 @@
 
 <!--next-version-placeholder-->
 
+## v2.0.0 (2022-01-29)
+### Feature
+* Updates README for package documentation. ([`08b4e9e`](https://github.com/UBC-MDS/airpyllution/commit/08b4e9e25e322586a8f5bb5199566e060e22ad2d))
+
+### Fix
+* Typo ([`3c72bd1`](https://github.com/UBC-MDS/airpyllution/commit/3c72bd14487742adc0f374c54ed40d85e391dfb8))
+
+### Breaking
+* Format of forecast function has changed.  ([`08b4e9e`](https://github.com/UBC-MDS/airpyllution/commit/08b4e9e25e322586a8f5bb5199566e060e22ad2d))
+
+### Documentation
+* Actually make it bold ([`d4c8ef8`](https://github.com/UBC-MDS/airpyllution/commit/d4c8ef88e0273d06cf9eb1b189f20c9e3ec93159))
+* Make text bold ([`634c780`](https://github.com/UBC-MDS/airpyllution/commit/634c78057c8f64491d5a51536a00cec9d6b4764a))
+* Update readme ([`b8d1557`](https://github.com/UBC-MDS/airpyllution/commit/b8d15577b7f59a82175e86ecf734c738fdf1983a))
+
 ## v1.1.3 (2022-01-29)
 ### Documentation
 * Hide output of key cell ([`868fa37`](https://github.com/UBC-MDS/airpyllution/commit/868fa374c5daa6bbc396751786a3e9e76c8ddb03))
