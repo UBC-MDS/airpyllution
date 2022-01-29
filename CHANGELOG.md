@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v0.2.1 (2022-01-29)
+### Fix
+* Styling ([`fb4a49c`](https://github.com/UBC-MDS/airpyllution/commit/fb4a49c67466dc12da07924417ae896da611aff8))
+
 ## v0.2.0 (2022-01-29)
 ### Feature
 * Updates release.yml ([`0c41bfd`](https://github.com/UBC-MDS/airpyllution/commit/0c41bfd8884bbb813b057012dd37d00a0dab156f))
