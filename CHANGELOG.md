@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v1.1.2 (2022-01-29)
+### Documentation
+* Add hide-input to api key cell ([`dbe5c20`](https://github.com/UBC-MDS/airpyllution/commit/dbe5c204981445e4c7b248d0b9cf9a262a33d9fb))
+
 ## v1.1.1 (2022-01-29)
 ### Documentation
 * Remove API key and put import it from an external file ([`6d2efde`](https://github.com/UBC-MDS/airpyllution/commit/6d2efded311c25e6bfadda4118c1777ca175eca0))
