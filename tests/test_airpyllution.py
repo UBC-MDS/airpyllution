@@ -70,10 +70,7 @@ def mocked_requests_get_pollution(*args, **kwargs):
         return MockResponse(mock_forecast_data, 200)
 
     return MockResponse(
-        {
-            "cod": 401,
-            "message": mock_invalid_message,
-        },
+        {"cod": 401, "message": mock_invalid_message},
         404,
     )
 
@@ -332,7 +329,7 @@ def test_pollution_forecast(mock_api_call):
         mock_params["lat"], mock_params["lon"], mock_params["appid"]
     )
 
-    assert forecast_chart.columns == 4
+    assert forecast_chart.columns == 3
     assert len(forecast_chart.data) > 2
     assert len(forecast_chart.data) == 16
     assert (
