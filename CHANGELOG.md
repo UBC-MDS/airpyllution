@@ -2,6 +2,19 @@
 
 <!--next-version-placeholder-->
 
+## v0.2.2 (2022-01-29)
+### Fix
+* Add show method to map plot ([`4cb1c0b`](https://github.com/UBC-MDS/airpyllution/commit/4cb1c0b650c693d94a3319e602b824cca7695c9e))
+
+### Documentation
+* Change usage wording ([`687d2ef`](https://github.com/UBC-MDS/airpyllution/commit/687d2efa5fb4c962fe0fb03cf0534f5a2425142e))
+* Add example plots ([`8a75c91`](https://github.com/UBC-MDS/airpyllution/commit/8a75c9161f474152ad51f9161464253435d99cd0))
+* Add readthedocs link ([`2642659`](https://github.com/UBC-MDS/airpyllution/commit/2642659a12039bfd0b8708b89a1e06e26c74640d))
+* Add badges ([`6518773`](https://github.com/UBC-MDS/airpyllution/commit/6518773ded518fe646d969d2fcee6a85b91f1834))
+* Add air pollution map ([`7d26633`](https://github.com/UBC-MDS/airpyllution/commit/7d26633f197631d8b5b19591c041e74bdf1978da))
+* Implement workaround for plotly plot and write descriptions ([`eb8c299`](https://github.com/UBC-MDS/airpyllution/commit/eb8c29976cb9ee1fad4e075d22b3e1720fa7f49a))
+* Draft example usage ([`aeddbf9`](https://github.com/UBC-MDS/airpyllution/commit/aeddbf9e1f7096645a46dedf7b380182ec33f612))
+
 ## v0.2.1 (2022-01-29)
 ### Fix
 * Styling ([`fb4a49c`](https://github.com/UBC-MDS/airpyllution/commit/fb4a49c67466dc12da07924417ae896da611aff8))
