@@ -28,34 +28,31 @@ jobs:
         with:
           fetch-depth: 0
 
-      # Disables main branch protection for PSR
-      - name: Disable admin branch protection
-        uses: benjefferies/branch-protection-bot@master
-        if: always()
-        with:
-          access_token: ${{ secrets.ACCESS_TOKEN }}
-          branch: main
-          enforce_admins: false
+#       # Disables main branch protection for PSR
+#       - name: Disable admin branch protection
+#         uses: benjefferies/branch-protection-bot@master
+#         if: always()
+#         with:
+#           access_token: ${{ secrets.ACCESS_TOKEN }}
+#           branch: main
+#           enforce_admins: false
 
       # Use PSR to make release
       - name: Python Semantic Release
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           pip install python-semantic-release
           git config user.name github-actions
           git config user.email github-actions@github.com
           semantic-release publish
 
-      # Re enables main branch protection
-      - name: Enable admin branch protection
-        uses: benjefferies/branch-protection-bot@master
-        if: always() # Force to always run this step to ensure "include administrators" is always turned back on
-        with:
-          access_token: ${{ secrets.ACCESS_TOKEN }}
-          branch: main
-          enforce_admins: true
+#       # Re enables main branch protection
+#       - name: Enable admin branch protection
+#         uses: benjefferies/branch-protection-bot@master
+#         if: always() # Force to always run this step to ensure "include administrators" is always turned back on
+#         with:
+#           access_token: ${{ secrets.ACCESS_TOKEN }}
+#           branch: main
+#           enforce_admins: true
 
       # Publish to TestPyPI
       - uses: pypa/gh-action-pypi-publish@release/v1
