@@ -1,4 +1,8 @@
 # airpyllution
+[![codecov](https://codecov.io/gh/UBC-MDS/airpyllution/branch/main/graph/badge.svg?token=c6vEGpbs3h)](https://codecov.io/gh/UBC-MDS/airpyllution)
+[![build](https://github.com/UBC-MDS/airpyllution/actions/workflows/build.yml/badge.svg)](https://github.com/UBC-MDS/airpyllution/actions/workflows/build.yml)
+[![deploy](https://github.com/UBC-MDS/airpyllution/actions/workflows/deploy.yml/badge.svg)](https://github.com/UBC-MDS/airpyllution/actions/workflows/deploy.yml)
+
 A package for visualizing or obtaining future, historic and current air pollution data using the [OpenWeather API](https://openweathermap.org).
 
 ## Summary
@@ -35,19 +39,17 @@ $ pip install --index-url https://test.pypi.org/simple/ \
 ```
 
 ## Usage
+[![readthedocs](https://readthedocs.org/projects/pip/badge/?version=latest)](https://airpyllution.readthedocs.io/en/latest/)
 
 1. Create an OpenWeatherMap API key
 2. Install airpyllution
-3. Run the following code from terminal after replacing your api key.
-```
-from airpyllution import airpyllution
-df = airpyllution.get_pollution_history(1606488670, 1606747870, 49.28, 123.12, "your_api_key")
-world_chart = airpyllution.get_air_pollution(49.2497, -123.1193, "your_api_key")
-world_chart.show()
-time_chart = airpyllution.get_pollution_forecast(45.0,180.0,"your_api_key")
-time_chart.show()
-```
+3. Refer to [ReadTheDocs](https://airpyllution.readthedocs.io/en/latest/) for a usage guide and examples.
 
+Using the `get_air_pollution` function you can generate interactive maps containing current pollution data by location:
+![](docs/air-pollution-map.png)
+
+Using the `get_pollution_forecast` function you can generate time-series scatterplots of forecasted air pollution data:
+![](docs/forecast-example.png)
 ## Contributing
 
 Interested in contributing? Check out the contributing guidelines. Please note that this project is released with a Code of Conduct. By contributing to this project, you agree to abide by its terms.
