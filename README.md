@@ -58,7 +58,7 @@ get_air_pollution(49.28, 123.12, api_key, "Current Air Pollution")
 
 ![](docs/air-pollution-map.png)
 
-**Generate a time-series scatterplots of forecasted air pollution data:**
+**Generate a time-series line chart of forecasted air pollution data:**
 ```
 import altair as alt
 alt.renderers.enable("html");
