@@ -39,6 +39,9 @@ jobs:
 
       # Use PSR to make release
       - name: Python Semantic Release
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           pip install python-semantic-release
           git config user.name github-actions
