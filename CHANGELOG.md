@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v1.1.1 (2022-01-29)
+### Documentation
+* Remove API key and put import it from an external file ([`6d2efde`](https://github.com/UBC-MDS/airpyllution/commit/6d2efded311c25e6bfadda4118c1777ca175eca0))
+
 ## v1.1.0 (2022-01-29)
 ### Feature
 * Updates release.yml ([`0c41bfd`](https://github.com/UBC-MDS/airpyllution/commit/0c41bfd8884bbb813b057012dd37d00a0dab156f))
