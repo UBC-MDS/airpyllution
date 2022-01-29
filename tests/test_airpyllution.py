@@ -69,7 +69,10 @@ def mocked_requests_get_pollution(*args, **kwargs):
             return "ERROR"
         return MockResponse(mock_forecast_data, 200)
 
-    return MockResponse({"cod": 401, "message": mock_invalid_message,}, 404,)
+    return MockResponse(
+        {"cod": 401, "message": mock_invalid_message},
+        404,
+    )
 
 
 @patch("requests.get", side_effect=mocked_requests_get_pollution)
@@ -213,7 +216,9 @@ def test_air_pollution(mock_api_call):
     # API error
     assert (
         airpyllution.get_air_pollution(
-            mock_params["lat"], mock_params["lon"], mock_error_params["appid"],
+            mock_params["lat"],
+            mock_params["lon"],
+            mock_error_params["appid"],
         )
         == "An error occurred requesting data from the API"
     )
@@ -303,7 +308,9 @@ def test_pollution_forecast(mock_api_call):
 
     assert (
         airpyllution.get_pollution_forecast(
-            mock_params["lat"], mock_params["lon"], mock_error_params["appid"],
+            mock_params["lat"],
+            mock_params["lon"],
+            mock_error_params["appid"],
         )
         == "An error occurred requesting data from the API"
     )
