@@ -1,4 +1,9 @@
 # airpyllution
+[![codecov](https://codecov.io/gh/UBC-MDS/airpyllution/branch/main/graph/badge.svg?token=c6vEGpbs3h)](https://codecov.io/gh/UBC-MDS/airpyllution)
+[![build](https://github.com/UBC-MDS/airpyllution/actions/workflows/build.yml/badge.svg)](https://github.com/UBC-MDS/airpyllution/actions/workflows/build.yml)
+[![deploy](https://github.com/UBC-MDS/airpyllution/actions/workflows/deploy.yml/badge.svg)](https://github.com/UBC-MDS/airpyllution/actions/workflows/deploy.yml)
+[![readthedocs](https://readthedocs.org/projects/pip/badge/?version=latest)](https://airpyllution.readthedocs.io/en/latest/)
+
 A package for visualizing or obtaining future, historic and current air pollution data using the [OpenWeather API](https://openweathermap.org).
 
 ## Summary
