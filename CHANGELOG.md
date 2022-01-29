@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v1.1.3 (2022-01-29)
+### Documentation
+* Hide output of key cell ([`868fa37`](https://github.com/UBC-MDS/airpyllution/commit/868fa374c5daa6bbc396751786a3e9e76c8ddb03))
+
 ## v1.1.2 (2022-01-29)
 ### Documentation
 * Add hide-input to api key cell ([`dbe5c20`](https://github.com/UBC-MDS/airpyllution/commit/dbe5c204981445e4c7b248d0b9cf9a262a33d9fb))
