@@ -76,7 +76,7 @@ get_pollution_forecast(49.28, 123.12, api_key)
 Interested in contributing? Check out the contributing guidelines. Please note that this project is released with a Code of Conduct. By contributing to this project, you agree to abide by its terms.
 ## License
 
-`airpyllution` was created by Christopher Alexander, Daniel King, Mel Liow. It is licensed under the terms of [Hippocratic License 3.0](https://github.com/UBC-MDS/airpyllution/blob/main/LICENSE).
+`airpyllution` was created by Christopher Alexander, Daniel King, Mel Liow. It is licensed under the terms of the [Hippocratic License 3.0](https://github.com/UBC-MDS/airpyllution/blob/main/LICENSE).
 
 ## Credits
 
