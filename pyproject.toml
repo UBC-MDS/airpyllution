@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "airpyllution"
-version = "2.0.0"
+version = "2.0.1"
 description = "A package which  provides various functionalities on air pollution data."
 authors = ["Christopher Alexander, Daniel King, Mel Liow"]
 license = "MIT"

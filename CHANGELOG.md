@@ -2,6 +2,11 @@
 
 <!--next-version-placeholder-->
 
+## v2.0.1 (2022-02-05)
+### Documentation
+* Updates readme for License link ([`394fd1d`](https://github.com/UBC-MDS/airpyllution/commit/394fd1d27839b060520dcfdde7d08a1b7320c0e9))
+* Updates license to hippocratic license. ([`fd97073`](https://github.com/UBC-MDS/airpyllution/commit/fd970730006740397242857d86babbaafac704cc))
+
 ## v2.0.0 (2022-01-29)
 ### Feature
 * Updates README for package documentation. ([`08b4e9e`](https://github.com/UBC-MDS/airpyllution/commit/08b4e9e25e322586a8f5bb5199566e060e22ad2d))
